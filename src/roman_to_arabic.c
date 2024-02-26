@@ -24,40 +24,39 @@ int main() {
 
 int check(char *str, int *I, int *V, int *X, int *L, int *C, int *D, int *M) {
     int error = 0;
-    // char ch;
-    // while (ch != 10)
-    for (int i = 0; str[i]; i++) {
-        // char ch = fgetc(stdin);
-        if (str[i] == 'I') {
-            *I = *I + 1;
-        } else if (str[i] == 'V') {
-            *V = *V + 1;
-            fix_previous(&I);
-        } else if (str[i] == 'X') {
-            *X = *X + 1;
-            fix_previous(&I);
-            fix_previous(&V);
-        } else if (str[i] == 'L') {
-            *L = *L + 1;
-            fix_previous(&V);
-            fix_previous(&X);
-        } else if (str[i] == 'C') {
-            *C = *C + 1;
-            fix_previous(&X);
-            fix_previous(&L);
-        } else if (str[i] == 'D') {
-            *D = *D + 1;
-            fix_previous(&L);
-            fix_previous(&C);
-        } else if (str[i] == 'M') {
-            *M = *M + 1;
-            fix_previous(&C);
-            fix_previous(&D);
-        } else {
-            error++;
-            break;
+    if (!(strcmp(str, "nulla") == 0 || strcmp(str, "nihil") == 0 || strcmp(str, "N") == 0))
+        for (int i = 0; str[i]; i++) {
+            // char ch = fgetc(stdin);
+            if (str[i] == 'I') {
+                *I = *I + 1;
+            } else if (str[i] == 'V') {
+                *V = *V + 1;
+                fix_previous(&I);
+            } else if (str[i] == 'X') {
+                *X = *X + 1;
+                fix_previous(&I);
+                fix_previous(&V);
+            } else if (str[i] == 'L') {
+                *L = *L + 1;
+                fix_previous(&V);
+                fix_previous(&X);
+            } else if (str[i] == 'C') {
+                *C = *C + 1;
+                fix_previous(&X);
+                fix_previous(&L);
+            } else if (str[i] == 'D') {
+                *D = *D + 1;
+                fix_previous(&L);
+                fix_previous(&C);
+            } else if (str[i] == 'M') {
+                *M = *M + 1;
+                fix_previous(&C);
+                fix_previous(&D);
+            } else {
+                error++;
+                break;
+            }
         }
-    }
     return error;
 }
 
