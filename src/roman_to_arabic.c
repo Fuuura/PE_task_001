@@ -23,7 +23,8 @@ int main() {
 int check(int *I, int *V, int *X, int *L, int *C, int *D, int *M) {
     int error = 0;
     char ch;
-    while (ch != 10) {
+    while (ch != 10) 
+    {
         ch = fgetc(stdin);
         if (ch == 'I') {
             *I = *I + 1;
