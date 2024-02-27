@@ -76,6 +76,10 @@ def test_roman_to_arabic_not_correct_input_3():
     assert result.returncode != 0
     assert "Puck you, Verter!" in result.stderr
 
+def test_roman_to_arabic_not_correct_input_4():
+    result = run([B_FILE_PATH], input='CMCMIXIX', encoding='utf-8', stdout=PIPE, stderr=PIPE)
+    assert result.returncode != 0
+    assert "Puck you, Verter!" in result.stderr
 
 if __name__ == "__main__":
     pytest.main()

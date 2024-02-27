@@ -110,6 +110,16 @@ if os.path.isfile(B_FILE_PATH):
     
     def test_universal_convert_not_correct_input_5():
         result = run([B_FILE_PATH], input='2 0', encoding='utf-8', stdout=PIPE, stderr=PIPE)
+        if result.returncode == 0:
+            assert result.stdout.strip() == 'nihil' or result.stdout.strip() == 'nulla' or result.stdout.strip() == 'N'
+    
+    def test_universal_convert_not_correct_input_6():
+        result = run([B_FILE_PATH], input='2 -1', encoding='utf-8', stdout=PIPE, stderr=PIPE)
+        assert result.returncode != 0
+        assert "Puck you, Verter!" in result.stderr
+    
+    def test_universal_convert_not_correct_input_7():
+        result = run([B_FILE_PATH], input='1 CMCMIXIX', encoding='utf-8', stdout=PIPE, stderr=PIPE)
         assert result.returncode != 0
         assert "Puck you, Verter!" in result.stderr
 
