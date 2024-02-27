@@ -12,16 +12,40 @@ void fck();
 
 int main() {
     int error = 0;
-    char str[MAX_LENGTH] = {0};
-    int sum = 0;
-    fgets(str, MAX_LENGTH, stdin);
-    if (str[strlen(str) - 1] == '\n') str[strlen(str) - 1] = '\0';
-    if (!nulla(str)) error = roman_to_arabic(str, &sum);
-    if (error) {
+    int option = 0;
+    if (!scanf("%d", &option) || option < 1 || option > 2) {
         fck();
         return 1;
     }
-    printf("%d", sum);
+    switch (option) {
+        case 1:
+            getchar();
+            char str[MAX_LENGTH] = {0};
+            int sum = 0;
+            fgets(str, MAX_LENGTH, stdin);
+            if (str[strlen(str) - 1] == '\n') str[strlen(str) - 1] = '\0';
+            if (!nulla(str)) error = roman_to_arabic(str, &sum);
+            if (error) {
+                fck();
+                return 1;
+            }
+            printf("%d", sum);
+            break;
+
+        case 2:
+            int n = 0;
+            char roman[MAX_LENGTH] = {0};
+            if (!scanf("%d", &n) || n < 0 || n > 3999) {
+                fck();
+                return 1;
+            }
+            if (n == 0)
+                strcpy(roman, "nulla");
+            else
+                arabic_to_roman(roman, n);
+            printf("%s", roman);
+            break;
+    }
     return 0;
 }
 
