@@ -25,7 +25,7 @@ int main() {
             fgets(str, MAX_LENGTH, stdin);
             if (str[strlen(str) - 1] == '\n') str[strlen(str) - 1] = '\0';
             if (!nulla(str)) error = roman_to_arabic(str, &sum);
-            if (error) {
+            if (error || strlen(str) == 0) {
                 fck();
                 return 1;
             }
