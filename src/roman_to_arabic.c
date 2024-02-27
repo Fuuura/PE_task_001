@@ -1,17 +1,22 @@
 #include <stdio.h>
 #include <string.h>
 
-#define MAX_LENGTH 15
+#define MAX_LENGTH 16
 
 int check(char *str, int *I, int *V, int *X, int *L, int *C, int *D, int *M);
+int nulla(char *str);
 void fck();
 void fix_previous(int **n);
 
 int main() {
     int error = 0;
     int I = 0, V = 0, X = 0, L = 0, C = 0, D = 0, M = 0;
-    char str[15];
-    scanf("%s", str);
+    char str[MAX_LENGTH];
+    fgets(str, MAX_LENGTH, stdin);
+    if (str[strlen(str) - 1] == '\n')
+        str[strlen(str) - 1] = '\0';
+    printf("%s", str);
+    // scanf("%s", str);
     error = check(str, &I, &V, &X, &L, &C, &D, &M);
     if (error) {
         fck();
@@ -22,11 +27,14 @@ int main() {
     return 0;
 }
 
+int nulla(char *str) {
+    return (strcmp(str, "nulla") == 0 || strcmp(str, "nihil") == 0 || strcmp(str, "N") == 0);
+}
+
 int check(char *str, int *I, int *V, int *X, int *L, int *C, int *D, int *M) {
     int error = 0;
-    if (!(strcmp(str, "nulla") == 0 || strcmp(str, "nihil") == 0 || strcmp(str, "N") == 0))
+    if (!nulla(str))
         for (int i = 0; str[i]; i++) {
-            // char ch = fgetc(stdin);
             if (str[i] == 'I') {
                 *I = *I + 1;
             } else if (str[i] == 'V') {
