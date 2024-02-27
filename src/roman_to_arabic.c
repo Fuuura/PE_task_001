@@ -72,7 +72,7 @@ int roman_to_arabic(char *str, int *sum) {
     return error;
 }
 
-void fck() { printf("Puck you, Verter!"); }
+void fck() { fprintf(stderr, "Puck you, Verter!"); }
 
 void fix_previous(int *n) {
     if (*n != 0) *n = *n - 2;
