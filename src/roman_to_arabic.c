@@ -13,10 +13,9 @@ int main() {
     int I = 0, V = 0, X = 0, L = 0, C = 0, D = 0, M = 0;
     char str[MAX_LENGTH];
     fgets(str, MAX_LENGTH, stdin);
-    if (str[strlen(str) - 1] == '\n')
-        str[strlen(str) - 1] = '\0';
+    // if (str[strlen(str) - 1] == '\n')
+    //     str[strlen(str) - 1] = '\0';
     printf("%s", str);
-    // scanf("%s", str);
     error = check(str, &I, &V, &X, &L, &C, &D, &M);
     if (error) {
         fck();
